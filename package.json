@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Scrape Kingborough Council Development Applications",
   "main": "scraper.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec \"npm run build && npm run start\"",
