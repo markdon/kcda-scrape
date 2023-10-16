@@ -4,7 +4,7 @@
   "description": "Scrape Kingborough Council Development Applications",
   "main": "scraper.js",
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
