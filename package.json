@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec \"npm run build && npm run start\"",
-    "build": "tsc",
+    "dev": "nodemon --exec \"npm run tsc && npm run start\"",
+    "tsc": "tsc",
     "start": "node scraper.js"
   },
   "repository": {
