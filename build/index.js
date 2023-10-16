@@ -48,7 +48,7 @@ sqlite3_1.default.verbose();
 (0, request_promise_1.default)(options)
     .then(($) => {
     const data = [];
-    $('#list tbody tr:not(:last-child)').map((i, el) => {
+    $('#list tbody tr').map((i, el) => {
         const cells = $(el).find('td');
         const strings = cells
             .toArray()

@@ -37,7 +37,7 @@ sqlite3.verbose();
 request(options)
   .then(($: CheerioAPI) => {
     const data: Document[] = [];
-    $('#list tbody tr:not(:last-child)').map((i, el) => {
+    $('#list tbody tr').map((i, el) => {
       const cells = $(el).find('td');
       const strings = cells
         .toArray()
