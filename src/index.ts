@@ -36,39 +36,40 @@ sqlite3.verbose();
 
 request(options)
   .then(($: CheerioAPI) => {
-    const data: Document[] = [];
-    $('#list tbody tr').map((i, el) => {
-      const cells = $(el).find('td');
-      const strings = cells
-        .toArray()
-        .map((el) => $(el).text().trim())
-        .slice(0, 5);
-      const more_info = $(el)
-        .find('a')
-        .toArray()
-        .map((el) => $(el).attr('href'))
-        .filter((s): s is string => !!s);
-      const info_url = more_info.shift() || '';
-      const [
-        council_reference,
-        address,
-        on_notice_from,
-        on_notice_to,
-        description,
-      ] = strings;
-      data.push({
-        council_reference,
-        address,
-        description,
-        info_url,
-        date_scraped: new Date().toISOString(),
-        on_notice_from:
-          DateTime.fromFormat(on_notice_from, 'd MMM yyyy').toISODate() || '',
-        on_notice_to:
-          DateTime.fromFormat(on_notice_to, 'd MMM yyyy').toISODate() || '',
-        more_info: JSON.stringify(more_info),
+    const data: Document[] = $('#list tbody tr')
+      .toArray()
+      .map((el) => {
+        const cells = $(el).find('td');
+        const strings = cells
+          .toArray()
+          .map((el) => $(el).text().trim())
+          .slice(0, 5);
+        const more_info = $(el)
+          .find('a')
+          .toArray()
+          .map((el) => $(el).attr('href'))
+          .filter((s): s is string => !!s);
+        const info_url = more_info.shift() || '';
+        const [
+          council_reference,
+          address,
+          on_notice_from,
+          on_notice_to,
+          description,
+        ] = strings;
+        return {
+          council_reference,
+          address,
+          description,
+          info_url,
+          date_scraped: new Date().toISOString(),
+          on_notice_from:
+            DateTime.fromFormat(on_notice_from, 'd MMM yyyy').toISODate() || '',
+          on_notice_to:
+            DateTime.fromFormat(on_notice_to, 'd MMM yyyy').toISODate() || '',
+          more_info: JSON.stringify(more_info),
+        };
       });
-    });
     console.log(data);
     // Open a database handle
     var db = new sqlite3.Database('data.sqlite');

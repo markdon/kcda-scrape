@@ -47,8 +47,9 @@ const options = {
 sqlite3_1.default.verbose();
 (0, request_promise_1.default)(options)
     .then(($) => {
-    const data = [];
-    $('#list tbody tr').map((i, el) => {
+    const data = $('#list tbody tr')
+        .toArray()
+        .map((el) => {
         const cells = $(el).find('td');
         const strings = cells
             .toArray()
@@ -61,7 +62,7 @@ sqlite3_1.default.verbose();
             .filter((s) => !!s);
         const info_url = more_info.shift() || '';
         const [council_reference, address, on_notice_from, on_notice_to, description,] = strings;
-        data.push({
+        return {
             council_reference,
             address,
             description,
@@ -70,7 +71,7 @@ sqlite3_1.default.verbose();
             on_notice_from: luxon_1.DateTime.fromFormat(on_notice_from, 'd MMM yyyy').toISODate() || '',
             on_notice_to: luxon_1.DateTime.fromFormat(on_notice_to, 'd MMM yyyy').toISODate() || '',
             more_info: JSON.stringify(more_info),
-        });
+        };
     });
     console.log(data);
     // Open a database handle
