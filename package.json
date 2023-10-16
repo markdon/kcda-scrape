@@ -1,0 +1,35 @@
+{
+  "name": "kcda-scrape",
+  "version": "1.0.0",
+  "description": "Scrape Kingborough Council Development Applications",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec \"npm run build && npm run start\"",
+    "build": "tsc",
+    "start": "node scraper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markdon/kcda-scrape.git"
+  },
+  "author": "Mark Donnellon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markdon/kcda-scrape/issues"
+  },
+  "homepage": "https://github.com/markdon/kcda-scrape#readme",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "@types/luxon": "^3.3.2",
+    "@types/request-promise": "^4.1.49",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "luxon": "^3.4.3",
+    "request-promise": "^4.2.6",
+    "sqlite3": "^5.1.6"
+  }
+}
